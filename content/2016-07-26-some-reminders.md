@@ -21,4 +21,8 @@ git push origin master
 ```
 to the output folder (repo) first before doing it for the blog-source. Dire consequences are to be expected if these reminders are not heeded by the future me.
 
-![snowy](./images/snowy.jpg)
+Lastly to add images, which I plan to add some in future posts, the way to add is to copy the picture to the `content/images` directory, follow by
+
+```
+![nameofphoto]({attach}./images/filename.extension)
+```
