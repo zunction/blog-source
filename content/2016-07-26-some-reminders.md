@@ -21,4 +21,4 @@ git push origin master
 ```
 to the output folder (repo) first before doing it for the blog-source. Dire consequences are to be expected if these reminders are not heeded by the future me.
 
-![snowy](images/snowy)
+![snowy](./images/snowy.jpg)
