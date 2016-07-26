@@ -1,10 +1,6 @@
-Title: About
-#Date: 2016-07-04 20:38
-#Category:
-Tags:
+Title: About Me
 Slug: about
-#Author: zunction
-#Summary:
-#Status: draft
 
-I am currently a research assistant at [Singapore University of Technology and Design](http://www.sutd.edu.sg/) and will be starting my PhD studies with Shaowei Lin as my advisor. My PhD studies is under the EDB-IPP Program and the company that I will be in employment with is [Nvidia](http://www.nvidia.com/content/global/global.php).
+Welcome to my page!
+
+I am currently a research assistant at [Singapore University of Technology and Design](http://www.sutd.edu.sg/) and will be starting my PhD studies with Shaowei Lin as my advisor in September 2016. I studied Mathematics in the [National University of Singapore](http://www.nus.edu.sg/) and would like to make use of my mathematical training develop myself in the field of AI and also explore interesting topics like [homotopy type theory](https://homotopytypetheory.org/).
