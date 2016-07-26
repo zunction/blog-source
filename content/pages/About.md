@@ -1,4 +1,4 @@
-Title: About Me
+Title: About
 #Date: 2016-07-04 20:38
 #Category:
 Tags:
