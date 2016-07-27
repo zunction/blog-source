@@ -10,4 +10,4 @@ To do backpropagation, we find
 
 $$\delta_{j}^{(l)} \equiv \frac{\partial C}{\partial z_{j}^{(l)}}$$
 
-which is the error of neuron $j$ in layer $l$. This is the first step to backpropagation. You would like to visit this website, [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/chap2.html) as it gives a clear explanation of backpropagation. Have fun!
+which is the error of neuron $j$ in layer $l$. Here the $C$ is the cost function and $z_{j}^{(l)}$ is the total weighted sums of inputs to unit $j$ in layer $l$. This is the first step to backpropagation. You would like to visit this website, [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/chap2.html) as it gives a clear explanation of backpropagation. Have fun!
