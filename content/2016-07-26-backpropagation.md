@@ -4,7 +4,7 @@ Tags:
 Slug: backpropagation
 Author: zhangsheng
 
-Time really flies... It is my fourth week in SUTD and I have been learning lots doing the deep learning tutorials on [UFLDL](http://deeplearning.stanford.edu/wiki/index.php/UFLDL_Tutorial). Although I did the Machine Learning course offered by Coursera by Andrew Ng, I never really got to really understand backpropagation. I'm just going say a bit about how backpropagation works and say more when I have the time to type finish.
+Time really flies... It is my fourth week in SUTD and I have been learning lots doing the deep learning tutorials on [UFLDL](http://deeplearning.stanford.edu/wiki/index.php/UFLDL_Tutorial). Although I did the Machine Learning course on Coursera by Andrew Ng, I never really got to really understand backpropagation. I'm just going say a bit about how backpropagation works and say more when I have the time to type finish.
 
 To do backpropagation, we find
 
