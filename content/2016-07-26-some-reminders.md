@@ -2,7 +2,7 @@ Title: Some reminders
 Date: 2016-07-26 21:13
 Tags: git, submodules
 Slug: some-reminders
-Author: zunction
+Author: zhangsheng
 
 Yet another reminder for myself on how to set up this blog.
 
