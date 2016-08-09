@@ -1,3 +1,6 @@
 [submodule "output"]
 	path = output
 	url = https://github.com/zunction/zunction.github.io
+[submodule "pelican-themes/pneumatic"]
+	path = pelican-themes/pneumatic
+	url = https://github.com/iKevinY/pneumatic
