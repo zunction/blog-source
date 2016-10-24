@@ -26,7 +26,7 @@ GOOGLE_FONTS = [
 ]
 
 SOCIAL_ICONS = [
-    ('mailto:lai.zhangsheng@gmail.com', 'Email (lai.zhangsheng@gmail.com)', 'fa-envelope'),
+    ('mailto:zhangsheng_lai@mymail.sutd.edu.sg', 'Email (zhangsheng_lai@mymail.sutd.edu.sg)', 'fa-envelope'),
     ('http://twitter.com/zunction', 'Twitter', 'fa-twitter'),
     ('http://github.com/zunction', 'GitHub', 'fa-github'),
 
