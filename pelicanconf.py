@@ -92,7 +92,7 @@ ASSET_CONFIG = [
     ('url_expire', False),
     ('versions', False),
 ]
-
+DISQUS_SITENAME = 'zunction.disqus.com'
 GOOGLE_ANALYTICS = 'UA-73850109-1'
 
 
