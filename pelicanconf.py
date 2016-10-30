@@ -36,7 +36,7 @@ THEME_COLOR = '#FF8000'
 
 
 # Pelican settings
-RELATIVE_URLS = True
+RELATIVE_URLS = False
 TIMEZONE = 'Asia/Singapore'
 DEFAULT_DATE = 'fs'
 DEFAULT_DATE_FORMAT = '%B %d, %Y'
