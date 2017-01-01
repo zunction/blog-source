@@ -105,7 +105,7 @@ $$
 
 thus to find the maximum value of $\ell(W;\mathcal{D})$ using gradient ascent for a Boltzmann machine with three units is tractable.
 
-Now what if we try to increase the network to a Boltzmann machine with 1M units or maybe a less ambitious 100 units? You will realize that to compute $Z(W)$ we need to sum over $2^{100} \sim 10^{30}$ terms; hence it is either very costly or impossible to evaluate $p_{model}(\mathbf{x}\mid W)$, thus approximation by sampling from the distribution is the next best alternative.
+Now what if we try to increase the network to a Boltzmann machine with 1M units or maybe a less ambitious 100 units? You will realize that to compute $Z(W)$ we need to sum over $2^{100} \sim 10^{30}$ terms; hence it is either very costly or impossible to evaluate $p_{model}(\mathbf{x}\mid W)$, thus approximation by sampling from the distribution $p_{model}(\mathbf{x}\mid W)$ is the next best alternative.
 
 ## Conclusion
 
