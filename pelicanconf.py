@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 # Theme-specific settings
 SITENAME = u"Zhangsheng Lai"
-DOMAIN = ''
+DOMAIN = 'https://github.zunction.io'
 BIO_TEXT = 'Learning How Machines Learn'
 FOOTER_TEXT = 'Powered by <a href="http://getpelican.com">Pelican</a> and <a href="http://pages.github.com">GitHub&nbsp;Pages</a>.'
 
@@ -37,6 +37,7 @@ THEME_COLOR = '#FF8000'
 
 # Pelican settings
 RELATIVE_URLS = False
+SITEURL = 'https://github.zunction.io'
 TIMEZONE = 'Asia/Singapore'
 DEFAULT_DATE = 'fs'
 DEFAULT_DATE_FORMAT = '%B %d, %Y'
@@ -92,7 +93,7 @@ ASSET_CONFIG = [
     ('url_expire', False),
     ('versions', False),
 ]
-DISQUS_SITENAME = 'zunction.disqus.com'
+DISQUS_SITENAME = 'zunction-github-io'
 GOOGLE_ANALYTICS = 'UA-73850109-1'
 
 

@@ -4,7 +4,7 @@ Tags:
 Slug: a-prelude-to-mpf
 Author: zhangsheng
 
-Recently I implemented a learning technique called [Minimum Probability Flow (MPF)](https://arxiv.org/pdf/0906.4779.pdf) where I generated samples using Gibbs sampling using a given parameter matrix $W$ and then re-learnt this matrix using MPF. Initially I was very lost in this learning technique as it is different from what we normally use in deep learning where we learn the weight matrix (which is also denoted by $W$) such that our cost function is minimized. After much exploration and learning through discussions with my lab mates and advisor, I managed to get a better understanding of this beautiful learning technique that I would like to dissect and discuss about here.
+On the last day of 2016, let's do some sharing. Recently I implemented a learning technique called [Minimum Probability Flow (MPF)](https://arxiv.org/pdf/0906.4779.pdf) where I generated samples using Gibbs sampling using a given parameter matrix $W$ and then re-learnt this matrix using MPF. Initially I was very lost in this learning technique as it is different from what we normally use in deep learning where we learn the weight matrix (which is also denoted by $W$) such that our cost function is minimized. After much exploration and learning through discussions with my lab mates and advisor, I managed to get a better understanding of this beautiful learning technique that I would like to dissect and discuss about here.
 
 With larger and more complex data, it becomes harder to fit probabilistic models to data due to the intractability of the partition function. Here, what we like to do with the data is to perform parameter estimation, which is the finding of model parameters from observations. An observation is of the form $\mathbf{x} = (x_1, x_2, \ldots, x_d)$ where each $x_i$ can be continuous or discrete. A dataset, represented by $\mathcal{D}$ consists of $N$ such feature vectors. To perform parameter estimation is to fit a particular probabilistic model $p(\mathbf{x}\mid \theta)$, chosen from a family of models parametrized by $\theta$, such that the model best summarizes the statistics of the observed dataset $\mathcal{D}$. The resulting learnt estimator is denoted by $\hat{\theta}$. For a probabilistic model $p(\mathbf{x}\mid \theta)$ we will use the notation:
 
@@ -72,7 +72,7 @@ Thinking of ML estimation in this manner will be useful for understanding how MP
 
 We now look at an example, the visible [Boltzmann machine](https://en.wikipedia.org/wiki/Boltzmann_machine), which is a type of probabilistic model over a binary state space that has $v$ visible units $\mathbf{x} = (x_1, x_2, \ldots, x_v)$ encoding a data vector, where each $x_i \in \{0, 1\}$.
 
-{% img left half /images/boltzmann.png 300 200 Boltzmann machine %}
+{% img left half /images/boltzmann.png 335 241 Boltzmann machine %}
 
 
 The above figure gives a Boltzmann machines with three visible units and the edges represent the interactions between the nodes. The contribution of an edge is the energy $W_{ij}x_ix_j$. We also note that an edge only contribute non-zero energy iff both of its corresponding nodes are 'on'. If we were to find the energy function of this network of three nodes, we get
@@ -92,6 +92,8 @@ with
 $$
 \ell(W, \mathcal{D}) = -\sum_{x \in \mathcal{D}}\sum_{i,j=1}^{3} W_{ij}x_ix_j - N \log Z(W)
 $$
+
+
 
 
 Happy New Year, 2017 is going to be a **prime** year.
