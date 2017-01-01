@@ -22,6 +22,8 @@ and so we can identify the energy as
 
 $$E(\mathbf{x}\mid \theta) = -\log p(\mathbf{x}\mid \theta - \log Z(\theta))$$
 
+## Maximum Likelihood Learning
+
 In practice, the method for fitting a probabilistic model to data is called [maximum likelihood learning (ML)](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation). The approach maximizes the log likelihood of the model parameters given the observed data with respect to the model parameters. For a given list of $N$ observed data samples $\mathcal{D} = \{x_i\}_i$, the log likelihood is defined as
 
 $$\ell(\theta, \mathcal{D}) = \log p(\mathcal{D}\mid \theta)$$
@@ -69,6 +71,7 @@ $$\hat{\theta}_{ML} = \text{argmin}_{\theta}~ D_{KL}(p_{data}||p_X(x\mid \theta)
 
 Thinking of ML estimation in this manner will be useful for understanding how MPF estimation works later.
 
+## Boltzmann Machine
 
 We now look at an example, the visible [Boltzmann machine](https://en.wikipedia.org/wiki/Boltzmann_machine), which is a type of probabilistic model over a binary state space that has $v$ visible units $\mathbf{x} = (x_1, x_2, \ldots, x_v)$ encoding a data vector, where each $x_i \in \{0, 1\}$.
 
@@ -93,7 +96,21 @@ $$
 \ell(W, \mathcal{D}) = -\sum_{x \in \mathcal{D}}\sum_{i,j=1}^{3} W_{ij}x_ix_j - N \log Z(W)
 $$
 
+The evaluation of $Z(W)$ is plausible, but solving $\partial \ell /\partial W = 0$ for the parameter $W$ is not possible analytically. Therefore, the next best option is to numerically solve for the weights $W$ using gradient ascent which we will use the gradient of the likelihood function that was derived earlier and take iterative steps $W_{ij}^{n+1} = W_{ij}^{n} + \delta W_{ij}^{n}$ where $\delta$ is the learning rate
 
+$$
+\delta W_{ij}^n \propto \left[\left\langle\frac{\partial E(x;W^n)}{\partial W_{ij}^n}\right\rangle_{data}-\left\langle\frac{\partial E(x;W^n)}{\partial W_{ij}^n}\right\rangle_{model}\right]=\Bigg[\left\langle x_ix_j\right\rangle_{data}-\left\langle x_ix_j\right\rangle_{model}\Bigg]\\
+=-\left[\frac{1}{N}\sum_{x\in \mathcal{D}}x_ix_j-\sum_{x}x_ix_j\frac{e^{-\sum_{kl}W_{kl}x_kx_l}}{Z(W)}\right]
+$$
 
+thus to find the maximum value of $\ell(W;\mathcal{D})$ using gradient ascent for a Boltzmann machine with three units is tractable.
+
+Now what if we try to increase the network to a Boltzmann machine with 1M units or maybe a less ambitious 100 units? You will realize that to compute $Z(W)$ we need to sum over $2^{100} \sim 10^{30}$ terms; hence it is either very costly or impossible to evaluate $p_{model}(\mathbf{x}\mid W)$, thus approximation by sampling from the distribution is the next best alternative.
+
+## Conclusion
+
+Maximum likelihood might be the *de facto* method for fitting a probabilistic model to data, however it has its limitations. In the example of the Boltzmann machine, we see that for small number of units we already have a problem of solving for the maximum analytically and have to utilize gradient ascent instead. But when we raise the number of units to the hundreds, computing the partition function becomes intractable, thus rendering the gradient ascent method not viable. Here is where MPF is different, which allows us to say goodbye to the partition function.
+
+In my next blog post, I will gradually move closer towards unravelling MPF and also discuss some alternatives to ML that have been tried.
 
 Happy New Year, 2017 is going to be a **prime** year.

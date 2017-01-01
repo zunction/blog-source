@@ -55,7 +55,7 @@ is forcing you to do something you dislike and there is no right or wrong in
 your choice. So, we have to be able to not succumb to such outburst.
 
 There's really much more I would have liked to share, but due to the amount
-of learnings I obtained in that nonresearch discussion, I could only synthesis
+of learnings I obtained in that nonresearch discussion, I could only synthesize
 out a partial of them to a level of accuracy that is acceptable for me.
 
 I hope the points I shared above made some sense to you. If it didn't, maybe
