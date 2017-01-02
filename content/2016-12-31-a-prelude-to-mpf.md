@@ -48,24 +48,27 @@ and the ML estimator is evaluated by finding the parameters $\theta$ that maximi
 
 In cases when it is impossible to derive a solution for the estimate $\hat{\theta}_{ML}$ that maximises the likelihod function, gradient ascent is used to find the maximum which comes with a set of problems in this approach. To do gradient ascent, we compute the gradient of the objective function and travel in a small step in the direction given by the gradient. Repeating this enough times with an appropriate step size which is also known as the learning rate, we will eventually arrive at a local maximum of the objective function. Unless the objective function is convex, there is no guarantee of arriving at the global maximum. Working out the gradient of $\ell$:
 
-$$\frac{\partial \ell (\theta, \mathcal{D})}{\partial \theta} = -\sum_{i=1}^{N}\frac{\partial E(x_i;\theta)}{\partial \theta} + N \frac{\partial \log Z(\theta)}{\partial \theta} \\
- = -N\left[\frac{1}{N}\sum_{i=1}^{N}\frac{\partial E(x_i;\theta)}{\partial \theta} - \sum_{x}\frac{\partial E(x_i;\theta)}{\partial \theta}\frac{e^{-E(x_i;\theta)}}{\partial Z(\theta)}\right] \\
+$$\frac{\partial \ell (\theta, \mathcal{D})}{\partial \theta} = -\sum_{i=1}^{N}\frac{\partial E(x_i;\theta)}{\partial \theta} - N \frac{\partial \log Z(\theta)}{\partial \theta} \\
+ = -N\left[\frac{1}{N}\sum_{i=1}^{N}\frac{\partial E(x_i;\theta)}{\partial \theta} + \frac{1}{Z(\theta)}\frac{\partial}{\partial \theta}\sum_{all~x}e^{-E(x;\theta)}\right]\\
+ = -N\left[\frac{1}{N}\sum_{i=1}^{N}\frac{\partial E(x_i;\theta)}{\partial \theta} - \sum_{all~x}\frac{\partial E(x_i;\theta)}{\partial \theta}\frac{e^{-E(x_i;\theta)}}{Z(\theta)}\right] \\
  = -N\left[\left\langle\frac{\partial E(x_i;\theta)}{\partial \theta}\right\rangle_{data}-\left\langle\frac{\partial E(x_i;\theta)}{\partial \theta}\right\rangle_{model}\right]
 $$
 
 which says that $\ell$ is maximized when the expected $\theta$ gradient of the energy over the data distribution is equal to the expected $\theta$ gradient of the energy over the model distribution.
 
-Allow me to deviate from the current discussion and jump to the [Kullback-Leibler (KL) divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence), that respect to two probability distributions $p(x)$ and $q(x)$ is defined as
+Allow me to deviate from the current discussion and define [Kullback-Leibler (KL) divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence), that with respect to two probability distributions $p(x)$ and $q(x)$ is defined as
 
-$$D_{KL}(p||q) = \sum_{x}p(x)\log \frac{p(x)}{q(x)}$$
+$$D_{KL}(p||q) = \sum_{all~x}p(x)\log \frac{p(x)}{q(x)}$$
 
 Coming back, by thinking of the data distribution of $\mathcal{D}$ as the theoretical distribution underlying $\mathcal{D}$ and denoting it by $p_{data}(x)$, consider the KL divergence between the data distribution $\mathcal{D}$ and the model distribution $p_X(x \mid \theta)$. Its negative gradient with respect to $\theta$ is
 
-$$-\frac{\partial}{\partial \theta}D_{KL}(p_{data}(x)||p_X(x\mid \theta)) = -\frac{\partial}{\partial \theta}\sum_{x}p_{data}(x) \log \frac{p_{data}(x)}{p_X(x\mid \theta)} \\
- = \sum_{x} p_{data}(x) \frac{\partial}{\partial \theta} \log p_X(x\mid \theta)\\  = -N\left[\frac{1}{N}\sum_{i=1}^{N}\frac{\partial E(x_i;\theta)}{\partial \theta} - \frac{\partial}{\partial \theta}\sum_{x}e^{-E(x;\theta)}\right]
+$$-\frac{\partial}{\partial \theta}D_{KL}(p_{data}(x)||p_X(x\mid \theta)) = -\frac{\partial}{\partial \theta}\sum_{all~x}p_{data}(x) \log \frac{p_{data}(x)}{p_X(x\mid \theta)} \\
+ = \sum_{all~x} p_{data}(x) \frac{\partial}{\partial \theta} \log p_X(x\mid \theta)\\
+ = -\sum_{i=1}^{N}\frac{\partial E(x;\theta)}{\partial \theta} -N \frac{\partial}{\partial \theta}\log Z(\theta)\\
+  = -N\left[\frac{1}{N}\sum_{i=1}^{N}\frac{\partial E(x_i;\theta)}{\partial \theta} + \frac{1}{Z(\theta)}\frac{\partial}{\partial \theta}\sum_{all~x}e^{-E(x;\theta)}\right]
 $$
 
-which is same as the gradient of the likelihood function $\ell$. Therefore, we see that minimizing the KL divergence between the distributions of the data and the model with respect to parameters $\theta$ is equivalent to maximizing the log likelihood function of the parameters given the dataset $\mathcal{D}$:
+which is same as the gradient of the likelihood function $\ell$. The equivalence of the second and third line is nontrivial; the reader might like to work it out for more rigor. Therefore, we see that minimizing the KL divergence between the distributions of the data and the model with respect to parameters $\theta$ is equivalent to maximizing the log likelihood function of the parameters given the dataset $\mathcal{D}$:
 
 $$\hat{\theta}_{ML} = \text{argmin}_{\theta}~ D_{KL}(p_{data}||p_X(x\mid \theta))$$
 
@@ -87,7 +90,7 @@ $$
 and the partition function $Z(W)$ is
 
 $$
-Z(W) = \sum_{x} e^{-\sum_{i,j=1}^{3}W_{ij}x_ix_j}
+Z(W) = \sum_{all~x} e^{-\sum_{i,j=1}^{3}W_{ij}x_ix_j}
 $$
 
 with
@@ -100,7 +103,7 @@ The evaluation of $Z(W)$ is plausible, but solving $\partial \ell /\partial W = 
 
 $$
 \delta W_{ij}^n \propto \left[\left\langle\frac{\partial E(x;W^n)}{\partial W_{ij}^n}\right\rangle_{data}-\left\langle\frac{\partial E(x;W^n)}{\partial W_{ij}^n}\right\rangle_{model}\right]=\Bigg[\left\langle x_ix_j\right\rangle_{data}-\left\langle x_ix_j\right\rangle_{model}\Bigg]\\
-=-\left[\frac{1}{N}\sum_{x\in \mathcal{D}}x_ix_j-\sum_{x}x_ix_j\frac{e^{-\sum_{kl}W_{kl}x_kx_l}}{Z(W)}\right]
+=-\left[\frac{1}{N}\sum_{x\in \mathcal{D}}x_ix_j-\sum_{all~x}x_ix_j\frac{e^{-\sum_{kl}W_{kl}x_kx_l}}{Z(W)}\right]
 $$
 
 thus to find the maximum value of $\ell(W;\mathcal{D})$ using gradient ascent for a Boltzmann machine with three units is tractable.
