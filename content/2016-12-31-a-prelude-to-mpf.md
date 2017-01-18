@@ -16,11 +16,11 @@ $$Z(\theta) = \sum_{\mathbf{x}}\exp\left[-E(\mathbf{x};\theta)\right]$$
 
 is a normalization factor which is also known as the partition function. These types of models are often called 'energy based models' and the function $E(\mathbf{x};\theta)$ is the 'energy'. One might think that energy based models are a specific class of models, however, any model that can be expressed as $p(\mathbf{x}\mid \theta)$ can we written in the form above:
 
-$$p(\mathbf{x}\mid\theta) = \exp\left[\log p(\mathbf{x}\mid \theta)\right] = \frac{ \exp\left[\log p(\mathbf{x}\mid \theta)+\log\right] }{Z(\theta)}$$
+$$p(\mathbf{x}\mid\theta) = \exp\left[\log p(\mathbf{x}\mid \theta)\right] = \frac{ \exp\left[\log p(\mathbf{x}\mid \theta)+\log Z(\theta)\right] }{Z(\theta)}$$
 
 and so we can identify the energy as
 
-$$E(\mathbf{x}\mid \theta) = -\log p(\mathbf{x}\mid \theta - \log Z(\theta))$$
+$$E(\mathbf{x}\mid \theta) = -\log p(\mathbf{x}\mid \theta) - \log Z(\theta)$$
 
 ## Maximum Likelihood Learning
 
