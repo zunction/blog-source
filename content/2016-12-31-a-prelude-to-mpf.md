@@ -99,7 +99,7 @@ $$
 \ell(W, \mathcal{D}) = -\sum_{x \in \mathcal{D}}\sum_{i,j=1}^{3} W_{ij}x_ix_j - N \log Z(W)
 $$
 
-The evaluation of $Z(W)$ is plausible, but solving $\partial \ell /\partial W = 0$ for the parameter $W$ is not possible analytically. Therefore, the next best option is to numerically solve for the weights $W$ using gradient ascent which we will use the gradient of the likelihood function that was derived earlier and take iterative steps $W_{ij}^{n+1} = W_{ij}^{n} + \delta W_{ij}^{n}$ where $\delta$ is the learning rate
+The evaluation of $Z(W)$ is plausible, but solving $\partial \ell /\partial W = 0$ for the parameter $W$ is not possible analytically. Therefore, the next best option is to numerically solve for the weights $W$ using gradient ascent which we will use the gradient of the likelihood function that was derived earlier and take iterative steps $W_{ij}^{n+1} = W_{ij}^{n} + \delta W_{ij}^{n}$ where $\delta  W_{ij}^{n}$ derivative of the likelihood function 
 
 $$
 \delta W_{ij}^n \propto \left[\left\langle\frac{\partial E(x;W^n)}{\partial W_{ij}^n}\right\rangle_{data}-\left\langle\frac{\partial E(x;W^n)}{\partial W_{ij}^n}\right\rangle_{model}\right]=\Bigg[\left\langle x_ix_j\right\rangle_{data}-\left\langle x_ix_j\right\rangle_{model}\Bigg]\\
